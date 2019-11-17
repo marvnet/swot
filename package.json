@@ -7,6 +7,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "extract-domain": "^2.2.1"
+    "extract-domain": "^2.2.1",
+    "parse-domain": "^2.3.4"
   }
 }

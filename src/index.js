@@ -1,34 +1,31 @@
 const extractDomain = require('extract-domain')
+const parseDomain   = require("parse-domain")
 const fs = require("fs")
 
+let DEBUG = false
+
+if(process.env.NODE_ENV) {
+    if(process.env.NODE_ENV == "development" || process.env.NODE_ENV == "test") DEBUG = true
+}
+
 module.exports.isAcademic = (subject) => {
-    const domain    = extractDomain(subject)
-    const domainParts = domain.split(".")
-    let domainLD    = domainParts
-    let university = domainLD.shift()
-    console.log(`University: "${university}" / LevelDomain: "${domainLD.join(".")}"`)
-    if(domainLD.length == 1) {
-        const TLD = domainLD[0]
-        if(fs.existsSync("domains/" + TLD)) {
-            if(fs.existsSync("domains/" + TLD + "/" + university + ".txt")) {
+    const domainData  = parseDomain(extractDomain(subject))
+    if(domainData) {
+        const domain      = domainData.domain
+        const TLD           = domainData.tld
+        if(fs.existsSync(`domains/${TLD.replace(".", "/")}`)) {
+            if(fs.existsSync(`domains/${TLD.replace(".", "/")}/${domain}`)) {
                 return true
             } else {
+                if(DEBUG) console.log("School does not exist")
                 return false
             }
         } else {
+            if(DEBUG) console.log("TLD does not exist")
             return false
         }
-    } else if(domainLD.length == 2) {
-        const TLD = domainLD[1]
-        const SLD = domainLD[0]
-        if(fs.existsSync("domains/" + TLD)) {
-            if(fs.existsSync("domains/" + TLD + "/" + SLD)) {
-                if(fs.existsSync("domains/" + TLD + "/" + SLD + "/" + university + ".txt")) {
-                    return true
-                } else return false
-            } else return false
-        } else return false
     } else {
+        if(DEBUG) console.log("Domain could not be parsed")
         return false
     }
 }
