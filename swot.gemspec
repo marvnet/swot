@@ -6079,6 +6079,7 @@ Gem::Specification.new do |s|
     "lib/domains/net/e-artsup.txt",
     "lib/domains/net/eastafricauniversity.txt",
     "lib/domains/net/efrei.txt",
+    "lib/domains/net/eichendorffschule.txt",
     "lib/domains/net/emvs/live.txt",
     "lib/domains/net/etna-alternance.txt",
     "lib/domains/net/etsmtl.txt",
