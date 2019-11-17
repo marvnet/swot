@@ -5,5 +5,8 @@
   "repository": "https://github.com/marvnet/swot2",
   "author": "MarvNet Digital <oss@marvnet.digital>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "extract-domain": "^2.2.1"
+  }
 }
