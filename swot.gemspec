@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "swot"
-  s.version = "1.0.1"
+  s.name = "swot2"
+  s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Lee Reilly"]
-  s.date = "2015-07-10"
+  s.authors = ["Marvin Schopf"]
+  s.date = "2019-11-17"
   s.description = "Identify email addresses or domains names that belong to colleges or universities. Help automate the process of approving or rejecting academic discounts."
-  s.email = "lee@leereilly.net"
+  s.email = "oss@marvnet.digital"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.md"
@@ -8071,11 +8071,11 @@ Gem::Specification.new do |s|
     "test/test_collection_methods.rb",
     "test/test_swot.rb"
   ]
-  s.homepage = "https://github.com/leereilly/swot"
+  s.homepage = "https://github.com/marvnet/swot"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.required_ruby_version = Gem::Requirement.new(">= 2.0")
-  s.rubygems_version = "2.0.14"
+  s.rubygems_version = "2.0.0"
   s.summary = "Identify email addresses or domains names that belong to colleges or universities."
   s.test_files = ["test/helper.rb", "test/test_collection_methods.rb", "test/test_swot.rb"]
 
