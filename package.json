@@ -1,13 +1,13 @@
 {
-  "name": "swot2",
+  "name": "@marvnet/swot2",
   "version": "1.0.0",
   "main": "src/index.js",
   "repository": "https://github.com/marvnet/swot2",
   "author": "MarvNet Digital <oss@marvnet.digital>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "dependencies": {
     "extract-domain": "^2.2.1",
     "parse-domain": "^2.3.4"
   }
-}
+}s
