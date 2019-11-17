@@ -8,13 +8,14 @@ if(process.env.NODE_ENV) {
     if(process.env.NODE_ENV == "development" || process.env.NODE_ENV == "test") DEBUG = true
 }
 
-module.exports.isAcademic = (subject) => {
-    const domainData  = parseDomain(extractDomain(subject))
-    if(domainData) {
-        const domain      = domainData.domain
-        const TLD           = domainData.tld
-        if(fs.existsSync(`domains/${TLD.replace(".", "/")}`)) {
-            if(fs.existsSync(`domains/${TLD.replace(".", "/")}/${domain}`)) {
+module.exports.isAcademic = function (subject) {
+    const PARSED_DOMAIN = parseDomain(subject)
+    if(DEBUG) console.log(`Extracted domain: ${PARSED_DOMAIN.domain + "." + PARSED_DOMAIN.tld}`)
+    if(PARSED_DOMAIN) {
+        if(DEBUG) console.log(`Looking up ${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}...`)
+        if(fs.existsSync(`${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}`)) {
+            if(DEBUG) console.log(`Looking up ${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}/${PARSED_DOMAIN.domain}.txt...`)
+            if(fs.existsSync(`${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}/${PARSED_DOMAIN.domain}.txt`)) {
                 return true
             } else {
                 if(DEBUG) console.log("School does not exist")
