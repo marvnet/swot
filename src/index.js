@@ -40,3 +40,22 @@ module.exports.isAcademic = function (subject) {
         return false
     }
 }
+
+module.exports.school_name = function(subject) {
+    if(this.isAcademic(subject)) {
+        let PARSED_DOMAIN = parseDomain(subject)
+        if(PARSED_DOMAIN) {
+            try {
+                if(PARSED_DOMAIN.tld.split(".").length == 2) {
+                    PARSED_DOMAIN.tld = PARSED_DOMAIN.tld.split(".")
+                    let tld_1 = PARSED_DOMAIN.tld[1]
+                    let tld_2 = PARSED_DOMAIN.tld[0]
+                    PARSED_DOMAIN.tld = tld_1 + "." + tld_2
+                }
+            } catch(e) {
+                // blackhole
+            }
+            return fs.readFileSync(`${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}/${PARSED_DOMAIN.domain}.txt`, 'utf8').replace("\n", "")
+        }
+    } else return false
+}
