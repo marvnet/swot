@@ -9,9 +9,19 @@ if(process.env.NODE_ENV) {
 }
 
 module.exports.isAcademic = function (subject) {
-    const PARSED_DOMAIN = parseDomain(subject)
+    let PARSED_DOMAIN = parseDomain(subject)
     if(DEBUG) console.log(`Extracted domain: ${PARSED_DOMAIN.domain + "." + PARSED_DOMAIN.tld}`)
     if(PARSED_DOMAIN) {
+        try {
+            if(PARSED_DOMAIN.tld.split(".").length == 2) {
+                PARSED_DOMAIN.tld = PARSED_DOMAIN.tld.split(".")
+                let tld_1 = PARSED_DOMAIN.tld[1]
+                let tld_2 = PARSED_DOMAIN.tld[0]
+                PARSED_DOMAIN.tld = tld_1 + "." + tld_2
+            }
+        } catch(e) {
+            // blackhole
+        }
         if(DEBUG) console.log(`Looking up ${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}...`)
         if(fs.existsSync(`${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}`)) {
             if(DEBUG) console.log(`Looking up ${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}/${PARSED_DOMAIN.domain}.txt...`)
