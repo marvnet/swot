@@ -9,7 +9,7 @@ const getDirectories = source =>
 
 const tlds = getDirectories(path.join(__dirname, "."))
 tlds.forEach((tld) => {
-    glob(path.join(__dirname, "/", tld + '/*.txt'), {}, (err, files)=>{
+    glob(path.join(__dirname, "/", tld + '/**/*.txt'), {}, (err, files)=>{
         files.forEach((file) => {
             const NEW_FILENAME = file.replace(".txt",  ".json")
             const SCHOOL_NAME  = fs.readFileSync(file, "utf8").replace("\n", "")
