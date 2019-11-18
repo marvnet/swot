@@ -61,7 +61,7 @@ module.exports.school = function(subject) {
 }
 
 // DEPRECATED
-module.exports.school_name = function(subject) {
+module.exports.school_name = function(subject) { // DEPRECATED
     if(this.isAcademic(subject)) {
         let PARSED_DOMAIN = parseDomain(subject)
         if(PARSED_DOMAIN) {
