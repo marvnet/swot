@@ -40,9 +40,9 @@ module.exports.isAcademic = function(subject) {
         if (
             fs.existsSync(
                 path.join(
-                    __dirname +
-                        "/domains/" +
-                        PARSED_DOMAIN.tld.replace(".", "/")
+                    __dirname,
+                    "/domains/",
+                    PARSED_DOMAIN.tld.replace(".", "/")
                 )
             )
         ) {
