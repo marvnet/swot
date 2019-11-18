@@ -25,8 +25,8 @@ module.exports.isAcademic = function (subject) {
         }
         if(DEBUG) console.log(`Looking up ${path.join(__dirname, "/domains/", PARSED_DOMAIN.tld.replace(".", "/"))}...`)
         if(fs.existsSync(path.join(__dirname + "/domains/" + PARSED_DOMAIN.tld.replace(".", "/")))) {
-            if(DEBUG) console.log(`Looking up ${path.join(__dirname, "/domains/", PARSED_DOMAIN.tld.replace(".", "/"), "/", PARSED_DOMAIN.domain, ".json")}.json...`)
-            if(fs.existsSync(path.join(__dirname, "/domains/", PARSED_DOMAIN.tld.replace(".", "/"), "/", PARSED_DOMAIN.domain, ".json"))) {
+            if(DEBUG) console.log(`Looking up ${path.join(__dirname, "/domains/", PARSED_DOMAIN.tld.replace(".", "/"), "/", PARSED_DOMAIN.domain + ".json")}...`)
+            if(fs.existsSync(path.join(__dirname, "/domains/", PARSED_DOMAIN.tld.replace(".", "/"), "/", PARSED_DOMAIN.domain +  ".json"))) {
                 return true
             } else {
                 if(DEBUG) console.log("School does not exist")
