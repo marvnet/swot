@@ -1,0 +1,3 @@
+[submodule "src/domains"]
+	path = src/domains
+	url = https://github.com/marvnet/swot-dataset.git
