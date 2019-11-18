@@ -1,6 +1,7 @@
 const extractDomain = require('extract-domain')
 const parseDomain   = require("parse-domain")
 const fs = require("fs")
+const path = require("path")
 
 let DEBUG = false
 
@@ -22,10 +23,10 @@ module.exports.isAcademic = function (subject) {
         } catch(e) {
             // blackhole
         }
-        if(DEBUG) console.log(`Looking up ${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}...`)
-        if(fs.existsSync(`${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}`)) {
-            if(DEBUG) console.log(`Looking up ${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}/${PARSED_DOMAIN.domain}.json...`)
-            if(fs.existsSync(`${__dirname}/domains/${PARSED_DOMAIN.tld.replace(".", "/")}/${PARSED_DOMAIN.domain}.json`)) {
+        if(DEBUG) console.log(`Looking up ${path.join(__dirname, "/domains/", PARSED_DOMAIN.tld.replace(".", "/"))}...`)
+        if(fs.existsSync(path.join(__dirname + "/domains/" + PARSED_DOMAIN.tld.replace(".", "/")))) {
+            if(DEBUG) console.log(`Looking up .json...`)
+            if(fs.existsSync(path.join(__dirname, "/domains/", PARSED_DOMAIN.tld.replace(".", "/"), "/", PARSED_DOMAIN.domain, ".json"))) {
                 return true
             } else {
                 if(DEBUG) console.log("School does not exist")
